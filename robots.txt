@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /social/
+Sitemap: https://vikops.lt/sitemap.xml

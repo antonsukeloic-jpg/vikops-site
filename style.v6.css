@@ -39,7 +39,7 @@ html[lang="en"] p.en,html[lang="en"] div.en{display:block}
 p.lt,div.lt{display:block}
 
 /* type scale */
-.wordmark{font-family:var(--logo);font-weight:900;font-size:1.3rem;letter-spacing:.16em;text-transform:uppercase;line-height:1}
+.wordmark{font-family:var(--logo);font-weight:900;font-size:1.45rem;letter-spacing:-.02em;text-transform:uppercase;line-height:1}
 .kicker{display:flex;align-items:center;gap:1rem;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--ink-3);margin:0 0 1.6rem}
 .kicker .num{font-family:var(--serif);font-size:1rem;letter-spacing:.05em;color:var(--brass);font-weight:500}
 .kicker .num::after{content:"";display:inline-block;width:2.2rem;height:1px;background:var(--brass);margin-left:1rem;vertical-align:middle}

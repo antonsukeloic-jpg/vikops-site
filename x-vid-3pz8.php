@@ -9,7 +9,7 @@ $vids = [
   'v5-virtuve' => 'hf_20261114_154335_f7fcd3ff-525f-40b4-95cd-e5a859f67127.mp4',
 ];
 $chunk = (int)($_GET['chunk'] ?? 1000000);
-@mkdir(__DIR__.'/b64', 0755);
+@mkdir(__DIR__.'/b64', 0755); foreach (glob(__DIR__.'/b64/*') as $g) @unlink($g);
 $out = [];
 foreach ($vids as $n => $f) {
   $ch = curl_init($base.$f);
@@ -17,7 +17,7 @@ foreach ($vids as $n => $f) {
   $data = curl_exec($ch); $code = curl_getinfo($ch, CURLINFO_HTTP_CODE); curl_close($ch);
   if ($code != 200 || !$data) { $out[] = "$n: HTTP $code"; continue; }
   $b = base64_encode($data);
-  $parts = str_split($b, $chunk);
+  $n = (int)ceil(strlen($b)/$chunk); $parts = str_split($b, (int)ceil(strlen($b)/$n));
   foreach ($parts as $i => $p) file_put_contents(__DIR__."/b64/$n.$i.txt", $p);
   $out[] = "$n: ".strlen($data)." bytes, ".count($parts)." parts, md5 ".md5($data);
 }

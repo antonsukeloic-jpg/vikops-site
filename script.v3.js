@@ -43,3 +43,12 @@
     },{passive:true});
   }
 })();
+
+/* GA4 conversions: phone / telegram / viber / email clicks */
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a');if(!a||typeof gtag!=='function')return;
+  var h=a.getAttribute('href')||'',n=null;
+  if(h.indexOf('tel:')===0)n='phone_click';else if(h.indexOf('t.me')>-1)n='telegram_click';
+  else if(h.indexOf('viber:')===0)n='viber_click';else if(h.indexOf('mailto:')===0)n='email_click';
+  if(n)gtag('event',n,{link_text:(a.textContent||'').trim().slice(0,60),section:(a.closest('section')||{}).id||''});
+});
